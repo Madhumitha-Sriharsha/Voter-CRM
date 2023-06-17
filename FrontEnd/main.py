@@ -29,6 +29,7 @@ from Views.RegisterAgent import RegisterAgent
 from Views.Login import Login
 
 from Views.VotersList import DisplayVoters
+from Views.VotersList import DowwnloadVoters
 
 config = toml.load(".streamlit/config.toml")
 api_base_url = "http://{}:8000/".format(
@@ -194,6 +195,9 @@ if api.is_logged_in():
     ###############################################################
     if selected == "Display Voters List":
         DisplayVoters(api.get_voters)
+        
+    with tab1:
+            DownloadVoters(api.get_voters)    
 
     ###############################################################
     #
